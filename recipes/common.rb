@@ -43,7 +43,10 @@ end
 
 db_user = node['openstack']['db']['telemetry']['username']
 db_pass = get_password 'db', 'ceilometer'
-db_uri = db_uri('telemetry', db_user, db_pass).to_s
+# db_uri only for sqlalchemy
+#db_uri = db_uri('telemetry', db_user, db_pass).to_s
+db_host = node['openstack']['db']['telemetry']['host']
+db_uri = "mongodb://#{db_user}:#{db_pass}@#{db_host}:27017/ceilometer"
 
 service_user = node['openstack']['telemetry']['service_user']
 service_pass = get_password 'service', 'openstack-ceilometer'
