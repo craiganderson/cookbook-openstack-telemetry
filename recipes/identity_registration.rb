@@ -25,6 +25,7 @@ class ::Chef::Recipe # rubocop:disable Documentation
 end
 
 api_endpoint = endpoint 'telemetry-api'
+api_endpoint_internal = endpoint 'telemetry-api-internal'
 identity_admin_endpoint = endpoint 'identity-admin'
 bootstrap_token = secret 'secrets', 'openstack_identity_bootstrap_token'
 auth_uri = ::URI.decode identity_admin_endpoint.to_s
@@ -80,8 +81,8 @@ openstack_identity_register 'Register Metering Endpoint' do
   bootstrap_token bootstrap_token
   service_type 'metering'
   endpoint_region node['openstack']['telemetry']['region']
-  endpoint_adminurl ::URI.decode api_endpoint.to_s
-  endpoint_internalurl ::URI.decode api_endpoint.to_s
+  endpoint_adminurl ::URI.decode api_endpoint_internal.to_s
+  endpoint_internalurl ::URI.decode api_endpoint_internal.to_s
   endpoint_publicurl ::URI.decode api_endpoint.to_s
 
   action :create_endpoint

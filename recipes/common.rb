@@ -54,7 +54,7 @@ service_tenant = node['openstack']['telemetry']['service_tenant_name']
 
 identity_endpoint = endpoint 'identity-api'
 identity_admin_endpoint = endpoint 'identity-admin'
-image_endpoint = endpoint 'image-api'
+image_endpoint = endpoint 'image-api-internal'
 telemetry_api_bind = endpoint 'telemetry-api-bind'
 
 auth_uri = auth_uri_transform identity_endpoint.to_s, node['openstack']['telemetry']['api']['auth']['version']

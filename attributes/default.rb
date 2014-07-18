@@ -23,6 +23,8 @@
 # that Nova uses
 default['openstack']['telemetry']['rabbit_server_chef_role'] = 'os-ops-messaging'
 
+default['openstack']['endpoints']['telemetry-api-internal']['uri'] = node['openstack']['endpoints']['telemetry-api']['uri']
+
 default['openstack']['telemetry']['conf_dir'] = '/etc/ceilometer'
 default['openstack']['telemetry']['conf'] = ::File.join(node['openstack']['telemetry']['conf_dir'], 'ceilometer.conf')
 default['openstack']['telemetry']['periodic_interval'] = 600
